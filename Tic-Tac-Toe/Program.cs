@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Security.Cryptography.X509Certificates;
 
 namespace TicTacToe
 {
@@ -21,88 +22,140 @@ namespace TicTacToe
             // 'Do' loop to keep game going...
             do
             {
-                DrawBoard(board);
-
                 int chooseRow, chooseCol;
                 bool validInput = false;
                 bool rowInput = false;
                 bool colInput = false;
                 bool boardInput = false;
 
+                DrawBoard(board); // Initially Draws The Empty Gameboard
+
                 do
                 {
                     // Get Input
                     do
                     {
-                        do
+                        Console.WriteLine("{0} Enter Row (1-3): ", playerNames[turn]);
+                        bool validRow = int.TryParse(Console.ReadLine(), out chooseRow);
+
+                        if (chooseRow <= 3 && chooseRow >= 1)
                         {
-                            Console.WriteLine("{0} Enter Row (1-3): ", playerNames[turn]);
-                            bool validRow = int.TryParse(Console.ReadLine(), out chooseRow);
-
-                            if (chooseRow <= 3 && chooseRow >= 1)
-                            {
-                                rowInput = true;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid Row. Try again.");
-                            }
-                        } while (!rowInput);
-
-                        do
-                        {
-                            Console.WriteLine("{0} Enter Column (1-3): ", playerNames[turn]);
-                            bool validCol = int.TryParse(Console.ReadLine(), out chooseCol);
-
-                            if (chooseCol <= 3 && chooseCol >= 1)
-                            {
-                                colInput = true;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid Column. Try again.");
-                            }
-                        } while (!colInput);
-
-                        if (board[chooseRow-1, chooseCol-1] == 0)
-                        {
-                            board[chooseRow-1,chooseCol-1] = playerSymbols[turn];
-                            totalTurns++;
-
-                            if (turn == 0)
-                            {
-                                turn++;
-                            }
-                            else
-                            {
-                                turn--;
-                            }
-
-                            DrawBoard(board);
+                            rowInput = true;
                         }
                         else
                         {
-                            Console.WriteLine("That section is already filled. Try Again.");
+                            Console.WriteLine("Invalid Row. Try again.");
                         }
+                    } while (!rowInput);
 
-                    } while (!boardInput);
-                    
+                    do
+                    {
+                        Console.WriteLine("{0} Enter Column (1-3): ", playerNames[turn]);
+                        bool validCol = int.TryParse(Console.ReadLine(), out chooseCol);
+
+                        if (chooseCol <= 3 && chooseCol >= 1)
+                        {
+                            colInput = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Column. Try again.");
+                        }
+                    } while (!colInput);
+
+                    if (rowInput && colInput)
+                    {
+                        validInput = true;
+                    }
+
+                    if (board[chooseRow - 1, chooseCol - 1] == 0)
+                    {
+                        board[chooseRow - 1, chooseCol - 1] = playerSymbols[turn];
+                        totalTurns++;
+                        boolDone = CheckForWinner(board, playerSymbols[turn]);
+
+                        if (turn == 0)
+                        {
+                            turn++;
+                        }
+                        else
+                        {
+                            turn--;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("That section is already filled. Try Again.");
+                    }
 
 
+                    if (totalTurns >= 9)
+                    {
+                        Console.WriteLine("MaxTurns Reached!");
+                    }
                 } while (!validInput);
 
-                // Set Board Spot as Owned By Player
-
                 // If CheckForWinner == true, break. (break = jump out of loop)
-
+                if (totalTurns == 9)
+                {
+                    boolDone = true;
+                }
             } while (!boolDone);
 
             // If game was tie, state that
+            Console.WriteLine("Game Over!");
             // If not a tie, declare winner
         }
 
         static bool CheckForWinner(char[,] board, char PlayerSymbol)
         {
+            int row = 0;
+            int col = 0;
+            int winCondition = 0;
+
+            for (row = 0; row < board.GetLength(0); row++)
+            {
+                if (board[row, col] == PlayerSymbol)
+                {
+                    winCondition++;
+                }
+                else
+                {
+                    col++;
+                }
+            }
+
+            for (col = 0; col < board.GetLength(0); col++)
+            {
+                if (board[row, col] == PlayerSymbol)
+                {
+                    winCondition++;
+                }
+                else
+                {
+                    col++;
+                }
+            }
+
+            if (winCondition >= 3)
+            {
+                DrawBoard(board);
+                if (PlayerSymbol == 'X')
+                {
+                    Console.WriteLine("Player 1 Wins!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                    return true;
+                }
+            }
+            else
+            {
+                winCondition = 0;
+            }
+
             // Check Vertical
             // Check Horizontal
             // Check Diagonal
@@ -120,7 +173,10 @@ namespace TicTacToe
                 for (int col = 0; col < board.GetLength(1); col++)
                 {
                     Console.Write(" {0} ", board[row, col]);
-                    Console.Write("|");
+                    if (col < board.GetLength(1) - 1)
+                    {
+                        Console.Write("|");
+                    }
                 }
 
                 Console.WriteLine();
@@ -132,6 +188,5 @@ namespace TicTacToe
                 }
             }
         }
-
     }
 }
