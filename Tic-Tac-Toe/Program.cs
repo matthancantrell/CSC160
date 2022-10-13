@@ -87,12 +87,6 @@ namespace TicTacToe
                     {
                         Console.WriteLine("That section is already filled. Try Again.");
                     }
-
-
-                    if (totalTurns >= 9)
-                    {
-                        Console.WriteLine("MaxTurns Reached!");
-                    }
                 } while (!validInput);
 
                 // If CheckForWinner == true, break. (break = jump out of loop)
@@ -103,13 +97,17 @@ namespace TicTacToe
             } while (!boolDone);
 
             // If game was tie, state that
-            Console.WriteLine("Game Over!");
+            if (totalTurns >= 9 && !CheckForWinner(board, 'X') && !CheckForWinner(board, 'O'))
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Tie Game! Neither of you win.");
+            }
             // If not a tie, declare winner
         }
 
         static bool CheckForWinner(char[,] board, char PlayerSymbol)
         {
-            int row = 0;
+/*            int row = 0;
             int col = 0;
             int winCondition = 0;
 
@@ -122,6 +120,7 @@ namespace TicTacToe
                 else
                 {
                     col++;
+                    winCondition = 0;
                 }
             }
 
@@ -135,9 +134,10 @@ namespace TicTacToe
                 {
                     col++;
                 }
-            }
+            }*/
 
-            if (winCondition >= 3)
+            // Vertical Win
+            if (board[0, 0] == PlayerSymbol && board[1, 0] == PlayerSymbol && board[2, 0] == PlayerSymbol)
             {
                 DrawBoard(board);
                 if (PlayerSymbol == 'X')
@@ -151,16 +151,108 @@ namespace TicTacToe
                     return true;
                 }
             }
-            else
+            if (board[0, 1] == PlayerSymbol && board[1, 1] == PlayerSymbol && board[2, 1] == PlayerSymbol)
             {
-                winCondition = 0;
+                DrawBoard(board);
+                if (PlayerSymbol == 'X')
+                {
+                    Console.WriteLine("Player 1 Wins!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                    return true;
+                }
+            }
+            if (board[0, 2] == PlayerSymbol && board[1, 2] == PlayerSymbol && board[2, 2] == PlayerSymbol)
+            {
+                DrawBoard(board);
+                if (PlayerSymbol == 'X')
+                {
+                    Console.WriteLine("Player 1 Wins!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                    return true;
+                }
             }
 
-            // Check Vertical
-            // Check Horizontal
-            // Check Diagonal
+            // Horizontal Win
+            if (board[0, 0] == PlayerSymbol && board[0, 1] == PlayerSymbol && board[0, 2] == PlayerSymbol)
+            {
+                DrawBoard(board);
+                if (PlayerSymbol == 'X')
+                {
+                    Console.WriteLine("Player 1 Wins!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                    return true;
+                }
+            }
+            if (board[1, 0] == PlayerSymbol && board[1, 1] == PlayerSymbol && board[1, 2] == PlayerSymbol)
+            {
+                DrawBoard(board);
+                if (PlayerSymbol == 'X')
+                {
+                    Console.WriteLine("Player 1 Wins!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                    return true;
+                }
+            }
+            if (board[2, 0] == PlayerSymbol && board[2, 1] == PlayerSymbol && board[2, 2] == PlayerSymbol)
+            {
+                DrawBoard(board);
+                if (PlayerSymbol == 'X')
+                {
+                    Console.WriteLine("Player 1 Wins!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                    return true;
+                }
+            }
 
-            // Use for Loop
+            // Diagonal Win
+            if (board[0, 0] == PlayerSymbol && board[1, 1] == PlayerSymbol && board[2, 2] == PlayerSymbol)
+            {
+                DrawBoard(board);
+                if (PlayerSymbol == 'X')
+                {
+                    Console.WriteLine("Player 1 Wins!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                    return true;
+                }
+            }
+            if (board[2, 0] == PlayerSymbol && board[1, 1] == PlayerSymbol && board[0, 2] == PlayerSymbol)
+            {
+                DrawBoard(board);
+                if (PlayerSymbol == 'X')
+                {
+                    Console.WriteLine("Player 1 Wins!");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Player 2 Wins!");
+                    return true;
+                }
+            }
 
             return false;
         }
