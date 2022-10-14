@@ -17,7 +17,6 @@ namespace TicTacToe
 
             int turn = 0; // Determines whose turn it is
             int totalTurns = 0; // Tracks number of turns to not exceed MAX (9)
-            bool elGato = false; // Game is tie
 
             // 'Do' loop to keep game going...
             do
@@ -26,7 +25,6 @@ namespace TicTacToe
                 bool validInput = false;
                 bool rowInput = false;
                 bool colInput = false;
-                bool boardInput = false;
 
                 DrawBoard(board); // Initially Draws The Empty Gameboard
 
@@ -74,7 +72,7 @@ namespace TicTacToe
                         totalTurns++;
                         boolDone = CheckForWinner(board, playerSymbols[turn]);
 
-                        if (CheckForWinner(board, playerSymbols[turn]))
+                        if (boolDone)
                         {
                             Console.WriteLine();
                             Console.WriteLine(playerNames[turn] + " wins!");
@@ -126,6 +124,7 @@ namespace TicTacToe
                         symbolsInCol++;
                         if (symbolsInCol == 3)
                         {
+                            DrawBoard(board);
                             return true;
                         }
                     }
