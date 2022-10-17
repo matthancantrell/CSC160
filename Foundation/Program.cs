@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MC_Lib;
+using System;
 
 namespace Foundation
 {
@@ -18,7 +19,9 @@ namespace Foundation
             //Parameters.DoIt();
 
             //String.Start();
-            Arrays.Go();
+            //Arrays.Go();
+
+            Console.WriteLine(IO.GetConsoleInt("Mhm", 1, 5));
         }
     }
 }

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foundation", "Foundation\Foundation.csproj", "{A614C4DA-07E1-4241-8F9F-719BF53335BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tic-Tac-Toe", "Tic-Tac-Toe\Tic-Tac-Toe.csproj", "{CC34F775-C578-4AEE-8F83-9112BD01D7E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tic-Tac-Toe", "Tic-Tac-Toe\Tic-Tac-Toe.csproj", "{CC34F775-C578-4AEE-8F83-9112BD01D7E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MC-Lib", "MC-Lib\MC-Lib.csproj", "{3CA246D8-5A57-489D-B9D3-0D588470AB46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CC34F775-C578-4AEE-8F83-9112BD01D7E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC34F775-C578-4AEE-8F83-9112BD01D7E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC34F775-C578-4AEE-8F83-9112BD01D7E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA246D8-5A57-489D-B9D3-0D588470AB46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA246D8-5A57-489D-B9D3-0D588470AB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA246D8-5A57-489D-B9D3-0D588470AB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA246D8-5A57-489D-B9D3-0D588470AB46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,6 +8,9 @@ namespace Foundation
 {
     internal class Arrays
     {
+        /// <summary>
+        /// garray
+        /// </summary>
         public static void Go()
         {
             int[] array1 = new int[3];
@@ -48,6 +51,39 @@ namespace Foundation
             Console.WriteLine();
 
             object[] stuff = new object[] { 10, "mafefe", 'X', 1.042f }; // All Variables Derrive From the Object Type
+
+            // S E P A R A T I O N
+
+            int[] aryNums = { 0, 1, 2, 3, 4, 5, 6 };
+            WriteArray(aryNums);
+            WriteArray(aryNums[..3]);
+            WriteArray(aryNums[1..4]);
+            WriteArray(aryNums[4..]);
+
+            Array.Reverse(aryNums);
+            WriteArray(aryNums);
+
+            Array.Sort(aryNums);
+            WriteArray(aryNums);
+
+            Console.WriteLine("Find Index of 2: {0}", Array.IndexOf(aryNums, 2));
+
+            Console.WriteLine("Numbers less than 4: ");
+            WriteArray(Array.FindAll(aryNums, LessThanFour));
+
+            static bool LessThanFour(int value)
+            {
+                return value < 4;
+            }
+
+            static void WriteArray(int[] values)
+            {
+                for (int i = 0; i < values.Length; i++)
+                {
+                    Console.WriteLine("{0}", values[i]);
+                }
+                Console.WriteLine();
+            }
         } 
     }
 }
