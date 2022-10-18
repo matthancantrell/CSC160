@@ -23,7 +23,7 @@ namespace Foundation
 
             string[] items = { "Enter", "Alter", "Exit" };
 
-            Console.WriteLine(IO.GetConsoleInt("mhm", 1, 5));
+            Console.WriteLine(IO.GetConsoleString("mhm"));
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace MC_Lib
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace MC_Lib
 {
     public class IO
     {
@@ -109,8 +111,26 @@
 
         public static string GetConsoleString(string message)
         {
-            Console.WriteLine("{0} : ", message);
-            return Console.ReadLine();
+            bool valid = false;
+            string inputS;
+            do
+            {
+
+                Console.WriteLine("{0} : ", message);
+                inputS = Console.ReadLine();
+                if (string.IsNullOrEmpty(inputS))
+                {
+                    Console.WriteLine("Invalid Input. Try Again.");
+                    valid = false;
+                }
+                else
+                {
+                    valid = true;
+                }
+
+            } while (!valid);
+
+            return inputS;
         }
 
         public static int GetConsoleMenu(string[] items)
