@@ -27,7 +27,7 @@
                     Console.WriteLine("Invalid Input. Try again.");
                 }
 
-            } while(!validInput);
+            } while (!validInput);
             return input;
         }
 
@@ -68,8 +68,14 @@
                 Console.WriteLine("{0} : ", message);
                 string inputS = Console.ReadLine();
 
-                if (inputS.ToLower().Equals("false") || inputS.ToLower().Equals("true"))
+                if (inputS.ToLower().Equals("false"))
                 {
+                    input = false;
+                    validInput = true;
+                }
+                else if (inputS.ToLower().Equals("true"))
+                {
+                    input = true;
                     validInput = true;
                 }
                 else
@@ -77,6 +83,68 @@
                     Console.WriteLine("Invalid Input. Try again.");
                 }
             } while (!validInput);
+            return input;
+        }
+
+        public static char GetConsoleChar(string message)
+        {
+            bool validInput = false;
+            char input;
+            do
+            {
+                Console.WriteLine("{0} : ", message);
+                bool valid = char.TryParse(Console.ReadLine(), out input);
+
+                if (valid)
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input. Try Again.");
+                }
+            } while (!validInput);
+            return input;
+        }
+
+        public static string GetConsoleString(string message)
+        {
+            Console.WriteLine("{0} : ", message);
+            return Console.ReadLine();
+        }
+
+        public static int GetConsoleMenu(string[] items)
+        {
+            bool validInput = false;
+            int input = -1;
+
+            do
+            {
+                for (int i = 0; i < items.Length; i++)
+                {
+                    Console.WriteLine((i + 1) + " - " + items[i]);
+                }
+
+                Console.WriteLine("\nSelect an item within the presented range : ");
+                bool valid = int.TryParse(Console.ReadLine(), out input);
+
+                if (valid)
+                {
+                    if (input > items.Length || input < 1)
+                    {
+                        Console.WriteLine("Invalid Input. Try Again.");
+                    }
+                    else
+                    {
+                        validInput = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input. Try Again.");
+                }
+
+            } while(!validInput);
             return input;
         }
     }

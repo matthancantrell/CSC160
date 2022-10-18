@@ -21,7 +21,9 @@ namespace Foundation
             //String.Start();
             //Arrays.Go();
 
-            Console.WriteLine(IO.GetConsoleInt("Mhm", 1, 5));
+            string[] items = { "Enter", "Alter", "Exit" };
+
+            Console.WriteLine(IO.GetConsoleInt("mhm", 1, 5));
         }
     }
 }
