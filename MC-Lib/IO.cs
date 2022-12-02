@@ -96,7 +96,7 @@ namespace MC_Lib
             {
                 Console.WriteLine("{0} : ", message);
                 bool valid = char.TryParse(Console.ReadLine(), out input);
-
+                
                 if (valid)
                 {
                     validInput = true;

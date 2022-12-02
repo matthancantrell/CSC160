@@ -7,23 +7,9 @@ namespace Foundation
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine("Hello World!\n");
-            // Console.WriteLine("What is your name?\n");
-            // string strName = Console.ReadLine();
-            // Console.WriteLine("\nHello " + strName + "! Happy to meet you!\n");
-            // Console.WriteLine($"Hello {strName} you're awesome!");
 
-            //DataTypes.Execute();
-            //Converting.DoIt();
-            //ValueReference.Engage();
-            //Parameters.DoIt();
+            Generics.Execute();
 
-            //String.Start();
-            //Arrays.Go();
-
-            string[] items = { "Enter", "Alter", "Exit" };
-
-            Console.WriteLine(IO.GetConsoleString("mhm"));
         }
     }
 }
