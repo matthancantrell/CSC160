@@ -5,31 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300">
-    <Grid>
-        <StackPanel Margin="10">
-            <TextBlock Text="Login" 
-                       FontSize="32"
-                       HorizontalAlignment="Center"/>
-            <Separator/>
-            <TextBlock Text="Name:" 
-                       FontWeight="Bold"/>
-            <TextBox x:Name="txtName" Text="{Binding Path=Login, Mode=TwoWay}"/>
-            <TextBlock Text="Password:" 
-                       FontWeight="Bold"/>
-            <TextBox x:Name="txtPassword" Text="{Binding Path=Login, Mode=TwoWay}"/>
-            <StackPanel Margin="20"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Center">
-                <Button x:Name="SubmitButton" 
-                        Margin="10 0"
+        Title="Login" Height="450" Width="300">
+
+    <StackPanel Margin="10">
+        <!-- Login -->
+        <TextBlock Text="Login" FontSize="32" HorizontalAlignment="Center"/>
+        <Separator/>
+        <TextBlock Text="Username:" FontWeight="Bold"/>
+        <TextBox x:Name="txtUsername" />
+
+        <TextBlock Text="Password:" FontWeight="Bold"/>
+        <TextBox x:Name="txtPassword" />
+
+        <Button x:Name="SubmitButton" Margin="10 10" Padding="10 0" Content="Submit"  Click="SubmitButton_Click"/>
+
+        <TextBlock x:Name="txtReturn" Text="" FontSize="10" HorizontalAlignment="Center"/>
+        <!-- Register -->
+        <TextBlock Text="Register" FontSize="32" HorizontalAlignment="Center"/>
+        <Separator/>
+        <TextBlock Text="Name:" FontWeight="Bold"/>
+        <TextBox x:Name="txtRName" />
+
+        <TextBlock Text="Username:" FontWeight="Bold"/>
+        <TextBox x:Name="txtRUsername" />
+
+        <TextBlock Text="Password:" FontWeight="Bold"/>
+        <TextBox x:Name="txtRPassword" />
+
+        <TextBlock Text="Email:" FontWeight="Bold"/>
+        <TextBox x:Name="txtREmail" />
+
+        <Button x:Name="RegisterButton"
+                        Margin="10 10"
                         Padding="10 0"
-                        Content="Submit"/>
-                <Button x:Name="RegisterButton"
-                        Margin="10 0"
-                        Padding="10 0"
-                        Content="Register"/>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+                        Content="Register"
+                        Click="RegisterButton_Click"/>
+    </StackPanel>
 </Window>
